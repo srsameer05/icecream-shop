@@ -1,0 +1,51 @@
+﻿Folder PATH listing for volume New Volume
+Volume serial number is F4EB-3DB6
+D:\ICE\SCOOPBILL\SRC
++---app
+ª   ª   favicon.ico
+ª   ª   globals.css
+ª   ª   layout.js
+ª   ª   page.js
+ª   ª   
+ª   +---analytics
+ª   ª       page.js
+ª   ª       
+ª   +---api
+ª   ª   +---analytics
+ª   ª   ª       route.js
+ª   ª   ª       
+ª   ª   +---bills
+ª   ª   ª       route.js
+ª   ª   ª       
+ª   ª   +---inventory
+ª   ª   ª   +---[id]
+ª   ª   ª           route.js
+ª   ª   ª           
+ª   ª   +---products
+ª   ª       ª   route.js
+ª   ª       ª   
+ª   ª       +---[id]
+ª   ª               route.js
+ª   ª               
+ª   +---billing
+ª   ª       page.js
+ª   ª       
+ª   +---inventory
+ª   ª       page.js
+ª   ª       
+ª   +---products
+ª           page.js
+ª           
++---components
+ª       Modal.js
+ª       Sidebar.js
+ª       Toast.js
+ª       
++---lib
+    ª   mongodb.js
+    ª   seed.js
+    ª   
+    +---models
+            Bill.js
+            Product.js
+            

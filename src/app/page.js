@@ -1,65 +1,191 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { useState, useEffect } from 'react';
+import { useToast } from '@/components/Toast';
+import Link from 'next/link';
+
+function catPillClass(c) {
+  return c === 'Ice Cream' ? 'classic' : c === 'Chips' ? 'premium' : c === 'Cold Drinks' ? 'special' : '';
+}
+
+function p2(n) { return '₹' + n.toFixed(2); }
+
+export default function DashboardPage() {
+  const showToast = useToast();
+  const [analytics, setAnalytics] = useState(null);
+  const [bills, setBills] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchData = async () => {
+    try {
+      const [analyticsRes, billsRes] = await Promise.all([
+        fetch('/api/analytics?period=day'),
+        fetch('/api/bills?period=day'),
+      ]);
+      const analyticsData = await analyticsRes.json();
+      const billsData = await billsRes.json();
+      setAnalytics(analyticsData);
+      setBills(billsData);
+    } catch (err) {
+      showToast('Failed to load dashboard data');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const todayDate = new Date().toLocaleDateString('en-IN', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+  });
+
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const today = new Date().getDay();
+
+  if (loading) {
+    return (
+      <div>
+        <h1>Good morning! 🌞</h1>
+        <div className="subtitle">Here&apos;s your shop at a glance — {todayDate}</div>
+        <div className="loading-spinner">Loading dashboard...</div>
+      </div>
+    );
+  }
+
+  const weeklyRevenue = analytics?.weeklyRevenue || days.map(d => ({ day: d, revenue: 0 }));
+  const weekTotal = weeklyRevenue.reduce((s, w) => s + w.revenue, 0);
+  const maxRev = Math.max(...weeklyRevenue.map(w => w.revenue), 1);
+
+  const topItems = (analytics?.productStats || []).filter(p => p.sold > 0).slice(0, 5);
+  const categoryMap = analytics?.categoryMap || {};
+  const catEntries = Object.entries(categoryMap).filter(([, v]) => v > 0);
+  const maxCat = Math.max(...catEntries.map(([, v]) => v), 1);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div>
+      <h1>Good morning! 🌞</h1>
+      <div className="subtitle">Here&apos;s your shop at a glance — {todayDate}</div>
+
+      {/* METRICS */}
+      <div className="metric-row">
+        <div className="metric pink">
+          <div className="mlabel">Today&apos;s Revenue</div>
+          <div className="mval">₹{Math.round(analytics?.totalRevenue || 0)}</div>
+          <div className="mdelta" style={{ color: 'var(--mint)' }}>↑ from yesterday</div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="metric">
+          <div className="mlabel">Bills Today</div>
+          <div className="mval">{analytics?.totalBills || 0}</div>
+          <div className="mdelta" style={{ color: 'var(--muted)' }}>transactions</div>
         </div>
-      </main>
+        <div className="metric mint">
+          <div className="mlabel">Units Sold</div>
+          <div className="mval">{analytics?.totalUnits || 0}</div>
+          <div className="mdelta" style={{ color: 'var(--muted)' }}>scoops & cones</div>
+        </div>
+        <div className="metric amber">
+          <div className="mlabel">This Week</div>
+          <div className="mval">₹{Math.round(weekTotal)}</div>
+          <div className="mdelta" style={{ color: 'var(--muted)' }}>total revenue</div>
+        </div>
+      </div>
+
+      {/* TOP ITEMS + CHARTS */}
+      <div className="grid2">
+        <div className="card">
+          <div className="card-head">
+            <h2>Top Selling Items</h2>
+            <span className="badge">Today</span>
+          </div>
+          <div>
+            {topItems.length > 0 ? topItems.map((p, i) => (
+              <div className="top-item" key={p._id}>
+                <div className="rank">{i + 1}</div>
+                <div className="iname">{p.name}</div>
+                <div className="istat">{p.sold} sold</div>
+                <div className="iprice">₹{Math.round(p.revenue)}</div>
+              </div>
+            )) : (
+              <div style={{ color: 'var(--muted)', fontSize: '13px', padding: '1rem 0' }}>
+                No sales yet. Generate your first bill!
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="card">
+          <div className="card-head">
+            <h2>Sales by Category</h2>
+            <span className="badge mint">Units</span>
+          </div>
+          <div>
+            {catEntries.length > 0 ? catEntries.map(([c, v]) => (
+              <div className="bar-row" key={c}>
+                <div className="bar-label">{c}</div>
+                <div className="bar-track">
+                  <div className="bar-fill" style={{ width: `${Math.round(v / maxCat * 100)}%` }} />
+                </div>
+                <div className="bar-val">{v}</div>
+              </div>
+            )) : (
+              <div style={{ color: 'var(--muted)', fontSize: '13px' }}>No sales yet</div>
+            )}
+          </div>
+          <div style={{ marginTop: '1rem' }}>
+            <div className="card-head" style={{ marginBottom: '.5rem' }}>
+              <h2>Weekly Revenue</h2>
+            </div>
+            <div className="revenue-line">
+              {weeklyRevenue.map((w, i) => (
+                <div
+                  key={w.day}
+                  className="rev-bar"
+                  style={{
+                    height: `${Math.max(4, Math.round((w.revenue / maxRev) * 100))}%`,
+                    background: i === today ? 'var(--pink)' : '#d4b0bc',
+                  }}
+                  data-tip={`${w.day}: ₹${Math.round(w.revenue)}`}
+                />
+              ))}
+            </div>
+            <div className="rev-labels">
+              {weeklyRevenue.map(w => (
+                <div className="rev-lbl" key={w.day}>{w.day.slice(0, 1)}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* RECENT BILLS */}
+      <div className="card">
+        <div className="card-head">
+          <h2>Recent Bills</h2>
+          <Link href="/billing" className="btn btn-secondary" style={{ textDecoration: 'none' }}>+ New Bill</Link>
+        </div>
+        <table className="prod-table">
+          <thead>
+            <tr><th>Bill #</th><th>Items</th><th>Amount</th><th>Time</th></tr>
+          </thead>
+          <tbody>
+            {bills.length > 0 ? bills.slice(0, 5).map(b => (
+              <tr key={b._id}>
+                <td style={{ fontWeight: 700, color: 'var(--pink)' }}>#{String(b.billNumber).padStart(4, '0')}</td>
+                <td>{b.items.map(i => i.name).slice(0, 2).join(', ')}{b.items.length > 2 ? ` +${b.items.length - 2} more` : ''}</td>
+                <td style={{ fontWeight: 700 }}>{p2(b.total)}</td>
+                <td style={{ color: 'var(--muted)' }}>{new Date(b.createdAt).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}</td>
+              </tr>
+            )) : (
+              <tr>
+                <td colSpan="4" style={{ textAlign: 'center', color: 'var(--muted)', padding: '1.5rem' }}>
+                  No bills yet today. Generate your first bill!
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
