@@ -1,6 +1,6 @@
 import './globals.css';
-import Sidebar from '@/components/Sidebar';
-import { ToastProvider } from '@/components/Toast';
+import Sidebar from '@/components/layout/Sidebar';
+import { ToastProvider } from '@/components/ui/Toast';
 
 export const metadata = {
   title: 'ScoopBill - Ice Cream Shop Billing System',
@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning>
         <ToastProvider>
           <div className="app">
             <Sidebar />

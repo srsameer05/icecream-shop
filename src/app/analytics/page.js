@@ -1,30 +1,19 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useToast } from '@/components/Toast';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  Filler,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Line, Bar } from 'react-chartjs-2';
+import { useToast } from '@/components/ui/Toast';
+import dynamic from 'next/dynamic';
+import MetricCard from '@/components/ui/MetricCard';
+import Spinner from '@/components/ui/Spinner';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  Filler,
-  Tooltip,
-  Legend
-);
+const RevenueChart = dynamic(() => import('@/components/charts/RevenueChart'), {
+  ssr: false,
+  loading: () => <Spinner message="Loading chart..." />
+});
+const TopItemsChart = dynamic(() => import('@/components/charts/TopItemsChart'), {
+  ssr: false,
+  loading: () => <Spinner message="Loading chart..." />
+});
 
 function catPillClass(c) {
   return c === 'Ice Cream' ? 'classic' : c === 'Chips' ? 'premium' : c === 'Cold Drinks' ? 'special' : '';
@@ -141,22 +130,10 @@ export default function AnalyticsPage() {
 
       {/* METRICS */}
       <div className="metric-row">
-        <div className="metric pink">
-          <div className="mlabel">Revenue</div>
-          <div className="mval">₹{Math.round(analytics?.totalRevenue || 0)}</div>
-        </div>
-        <div className="metric">
-          <div className="mlabel">Total Bills</div>
-          <div className="mval">{analytics?.totalBills || 0}</div>
-        </div>
-        <div className="metric mint">
-          <div className="mlabel">Units Sold</div>
-          <div className="mval">{analytics?.totalUnits || 0}</div>
-        </div>
-        <div className="metric amber">
-          <div className="mlabel">Avg. Bill</div>
-          <div className="mval">₹{Math.round(analytics?.avgBill || 0)}</div>
-        </div>
+        <MetricCard colorClass="pink" label="Revenue" value={`₹${Math.round(analytics?.totalRevenue || 0)}`} />
+        <MetricCard label="Total Bills" value={analytics?.totalBills || 0} />
+        <MetricCard colorClass="mint" label="Units Sold" value={analytics?.totalUnits || 0} />
+        <MetricCard colorClass="amber" label="Avg. Bill" value={`₹${Math.round(analytics?.avgBill || 0)}`} />
       </div>
 
       {/* CHARTS */}
@@ -164,13 +141,13 @@ export default function AnalyticsPage() {
         <div className="card">
           <div className="card-head"><h2>Revenue Chart</h2></div>
           <div style={{ position: 'relative', height: '220px' }}>
-            <Line data={revenueChartData} options={revenueChartOptions} />
+            <RevenueChart data={revenueChartData} options={revenueChartOptions} />
           </div>
         </div>
         <div className="card">
           <div className="card-head"><h2>Top Items</h2></div>
           <div style={{ position: 'relative', height: '220px' }}>
-            <Bar data={topChartData} options={topChartOptions} />
+            <TopItemsChart data={topChartData} options={topChartOptions} />
           </div>
         </div>
       </div>

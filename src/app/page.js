@@ -1,8 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useToast } from '@/components/Toast';
+import { useToast } from '@/components/ui/Toast';
 import Link from 'next/link';
+import MetricCard from '@/components/ui/MetricCard';
+import Spinner from '@/components/ui/Spinner';
 
 function catPillClass(c) {
   return c === 'Ice Cream' ? 'classic' : c === 'Chips' ? 'premium' : c === 'Cold Drinks' ? 'special' : '';
@@ -49,7 +51,7 @@ export default function DashboardPage() {
       <div>
         <h1>Good morning! 🌞</h1>
         <div className="subtitle">Here&apos;s your shop at a glance — {todayDate}</div>
-        <div className="loading-spinner">Loading dashboard...</div>
+        <Spinner message="Loading dashboard..." />
       </div>
     );
   }
@@ -70,26 +72,10 @@ export default function DashboardPage() {
 
       {/* METRICS */}
       <div className="metric-row">
-        <div className="metric pink">
-          <div className="mlabel">Today&apos;s Revenue</div>
-          <div className="mval">₹{Math.round(analytics?.totalRevenue || 0)}</div>
-          <div className="mdelta" style={{ color: 'var(--mint)' }}>↑ from yesterday</div>
-        </div>
-        <div className="metric">
-          <div className="mlabel">Bills Today</div>
-          <div className="mval">{analytics?.totalBills || 0}</div>
-          <div className="mdelta" style={{ color: 'var(--muted)' }}>transactions</div>
-        </div>
-        <div className="metric mint">
-          <div className="mlabel">Units Sold</div>
-          <div className="mval">{analytics?.totalUnits || 0}</div>
-          <div className="mdelta" style={{ color: 'var(--muted)' }}>scoops & cones</div>
-        </div>
-        <div className="metric amber">
-          <div className="mlabel">This Week</div>
-          <div className="mval">₹{Math.round(weekTotal)}</div>
-          <div className="mdelta" style={{ color: 'var(--muted)' }}>total revenue</div>
-        </div>
+        <MetricCard colorClass="pink" label="Today's Revenue" value={`₹${Math.round(analytics?.totalRevenue || 0)}`} delta="↑ from yesterday" />
+        <MetricCard label="Bills Today" value={analytics?.totalBills || 0} delta="transactions" deltaColor="var(--muted)" />
+        <MetricCard colorClass="mint" label="Units Sold" value={analytics?.totalUnits || 0} delta="scoops & cones" deltaColor="var(--muted)" />
+        <MetricCard colorClass="amber" label="This Week" value={`₹${Math.round(weekTotal)}`} delta="total revenue" deltaColor="var(--muted)" />
       </div>
 
       {/* TOP ITEMS + CHARTS */}

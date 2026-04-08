@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useToast } from '@/components/Toast';
+import { useToast } from '@/components/ui/Toast';
+import Spinner from '@/components/ui/Spinner';
 
 export default function SettingsPage() {
   const showToast = useToast();
@@ -65,7 +66,7 @@ export default function SettingsPage() {
       <div>
         <h1>Profile & Settings ⚙️</h1>
         <div className="subtitle">Manage shop details, billing config, and admin profile.</div>
-        <div className="loading-spinner">Loading settings...</div>
+        <Spinner message="Loading settings..." />
       </div>
     );
   }

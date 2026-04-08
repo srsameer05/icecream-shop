@@ -5,9 +5,10 @@ import Settings from '@/lib/models/Settings';
 export async function GET() {
   try {
     await dbConnect();
-    let settings = await Settings.findOne({});
+    let settings = await Settings.findOne({}).lean();
     if (!settings) {
-      settings = await Settings.create({});
+      const created = await Settings.create({});
+      settings = created.toObject();
     }
     return NextResponse.json(settings);
   } catch (error) {

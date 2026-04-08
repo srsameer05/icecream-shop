@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useToast } from '@/components/Toast';
+import { useToast } from '@/components/ui/Toast';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import Spinner from '@/components/ui/Spinner';
 
 function p2(n) { return '₹' + n.toFixed(2); }
 
@@ -22,7 +23,7 @@ export default function BillingPage() {
       fetch('/api/settings').then(res => res.json())
     ])
       .then(([prodData, setSettingsData]) => {
-        setProducts(prodData);
+        setProducts(Array.isArray(prodData) ? prodData : []);
         setSettings(setSettingsData);
         setLoading(false);
       })
@@ -219,7 +220,7 @@ export default function BillingPage() {
       <div>
         <h1>New Bill 🧾</h1>
         <div className="subtitle">Select items to add to the cart, then generate the bill.</div>
-        <div className="loading-spinner">Loading products...</div>
+        <Spinner message="Loading products..." />
       </div>
     );
   }

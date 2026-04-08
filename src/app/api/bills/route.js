@@ -25,7 +25,7 @@ export async function GET(request) {
       dateFilter = { createdAt: { $gte: startOfMonth } };
     }
 
-    const bills = await Bill.find(dateFilter).sort({ createdAt: -1 });
+    const bills = await Bill.find(dateFilter).sort({ createdAt: -1 }).lean();
     return NextResponse.json(bills);
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });

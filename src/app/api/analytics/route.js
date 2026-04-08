@@ -25,8 +25,8 @@ export async function GET(request) {
       dateFilter = { createdAt: { $gte: startOfMonth } };
     }
 
-    const bills = await Bill.find(dateFilter);
-    const products = await Product.find({});
+    const bills = await Bill.find(dateFilter).lean();
+    const products = await Product.find({}).lean();
 
     const totalRevenue = bills.reduce((sum, b) => sum + b.total, 0);
     const totalUnits = bills.reduce((sum, b) => sum + b.units, 0);

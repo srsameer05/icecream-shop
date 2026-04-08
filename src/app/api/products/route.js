@@ -6,11 +6,12 @@ import defaultProducts from '@/lib/seed';
 export async function GET() {
   try {
     await dbConnect();
-    let products = await Product.find({}).sort({ createdAt: 1 });
+    let products = await Product.find({}).sort({ createdAt: 1 }).lean();
 
     // Seed default products if DB is empty
     if (products.length === 0) {
-      products = await Product.insertMany(defaultProducts);
+      const inserted = await Product.insertMany(defaultProducts);
+      products = inserted.map(doc => doc.toObject());
     }
 
     return NextResponse.json(products);
