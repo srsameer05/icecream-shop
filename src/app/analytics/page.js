@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useToast } from '@/components/ui/Toast';
 import dynamic from 'next/dynamic';
 import MetricCard from '@/components/ui/MetricCard';

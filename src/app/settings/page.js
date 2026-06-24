@@ -93,8 +93,8 @@ export default function SettingsPage() {
                <input type="text" name="phone" value={settings.phone} onChange={handleChange} />
             </div>
             <div className="form-group">
-              <label>Email Address</label>
-              <input type="email" name="ownerEmail" value={settings.ownerEmail} onChange={handleChange} />
+               <label>Email Address</label>
+               <input type="email" name="ownerEmail" value={settings.ownerEmail} onChange={handleChange} />
             </div>
             
             <div className="form-group" style={{ gridColumn: 'span 2' }}>

@@ -251,7 +251,7 @@ export default function AllBillsPage() {
               </tr>
             )) : (
               <tr>
-                <td colSpan="6" style={{ textAlign: 'center', padding: '3rem', color: 'var(--muted)' }}>
+                <td colSpan="7" style={{ textAlign: 'center', padding: '3rem', color: 'var(--muted)' }}>
                   No bills found matching your filters.
                 </td>
               </tr>
