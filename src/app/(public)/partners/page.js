@@ -35,9 +35,8 @@ export default function PartnersPage() {
             <div className="contact-us_message-container mobile-100">
               <h2 className="heading-style-h3 text-weight-xbold text-color-fochia">Become our partner</h2>
               <div className="text-size-medium" style={{ marginBottom: '20px' }}>
-                Minimelts Egypt is open to forming mutually beneficial collaborations in sales and marketing through
-                Minimelts global and proven business model which is supported by over 20 years of experience in 55 different
-                countries around the world.
+                Scoop Bill is open to forming mutually beneficial collaborations in sales, franchising, and marketing through
+                our proven business model backed by extensive operational experience and high quality standards.
               </div>
               <div className="partners-offers_container" style={{ marginBottom: '20px' }}>
                 <h4 className="text-color-fochia">We offer our partners</h4>
@@ -61,13 +60,13 @@ export default function PartnersPage() {
                 </div>
               </div>
               <div className="text-size-medium">
-                We also invite co-branded joint ventures and activities with both local and international brands that brings us
-                closer to our fans and helps our partners achieve their goals.
+                We also invite co-branded joint ventures and activities with both local and international brands that bring us
+                closer to our fans and help our partners achieve their goals.
                 <br />
                 <br />
                 <span className="text-weight-medium">For partnership inquiries send an email at: </span>
-                <a href="mailto:Sales@minimelts.com.eg?subject=Partnership">
-                  <span className="text-weight-medium" style={{ textDecoration: 'underline' }}>Sales@minimelts.com.eg</span>
+                <a href="mailto:sales@scoopbill.com?subject=Partnership">
+                  <span className="text-weight-medium" style={{ textDecoration: 'underline' }}>sales@scoopbill.com</span>
                 </a>
               </div>
             </div>

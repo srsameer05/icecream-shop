@@ -35,7 +35,7 @@ export default function ContactUsPage() {
             <div className="contact-us_message-container mobile-100">
               <h2 className="heading-style-h3 text-weight-xbold text-color-blue">We’d love to hear from you</h2>
               <div className="text-size-medium">
-                Feel free to contact Minimelts anytime, day or night, via email, our contact form, or the mailing address provided below.
+                Feel free to contact Scoop Bill anytime, day or night, via email, our contact form, or the mailing address provided below.
                 <br />
                 <br />
                 We embrace all forms of communication, including suggestions and feedback from our valued fans and stakeholders.
@@ -43,8 +43,8 @@ export default function ContactUsPage() {
                 <br />
                 For general inquiries send us an email at:
                 <br />
-                <a href="mailto:Info@minimelts.com.eg?subject=Getting%20in%20Touch">
-                  <span style={{ textDecoration: 'underline', color: 'inherit', fontWeight: 'bold' }}>Info@minimelts.com.eg</span>
+                <a href="mailto:info@scoopbill.com?subject=Getting%20in%20Touch">
+                  <span style={{ textDecoration: 'underline', color: 'inherit', fontWeight: 'bold' }}>info@scoopbill.com</span>
                 </a>
               </div>
             </div>

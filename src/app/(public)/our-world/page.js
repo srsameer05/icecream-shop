@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Minimelts Egypt - Our World',
-  description: "Follow the latest news, events, and jobs from Minimelts Egypt.",
+  title: 'Scoop Bill - Our World',
+  description: "Follow the latest news, events, and jobs from Scoop Bill Egypt.",
 };
 
 const newsItems = [
@@ -8,31 +8,31 @@ const newsItems = [
     title: 'All flavors are in hand',
     date: 'December 30, 2023',
     img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/65906a4f39b8ba9d618e59bc_News_4.jpg',
-    description: "Egypt's vibrant energy to every scoop. Mango meets cardamom, every taste a sweet serenade to the land of pyramids and palms."
+    description: "Bringing our vibrant energy to every scoop. Mango meets cardamom, every taste a sweet serenade of premium dairy and fruits."
   },
   {
     title: 'New flavors drop',
     date: 'December 30, 2023',
     img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/659069ebfb84bc3e3d783152_News_3.jpg',
-    description: "Egypt's vibrant energy to every scoop. Mango meets cardamom, every taste a sweet serenade to the land of pyramids and palms."
+    description: "Bringing our vibrant energy to every scoop. Mango meets cardamom, every taste a sweet serenade of premium dairy and fruits."
   },
   {
-    title: 'Minimelts for every mood',
+    title: 'Scoop Bill for every mood',
     date: 'December 30, 2023',
     img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/659069a564aed4b6f4ec0af3_News_2.jpg',
-    description: "Egypt's vibrant energy to every scoop. Mango meets cardamom, every taste a sweet serenade to the land of pyramids and palms."
+    description: "Bringing our vibrant energy to every scoop. Mango meets cardamom, every taste a sweet serenade of premium dairy and fruits."
   }
 ];
 
 const eventsItems = [
   {
-    title: 'Minimelts Mall of Egypt',
+    title: 'Scoop Bill Mall of Egypt',
     location: '6th of October, Central axis, Mall of Egypt, Giza, Egypt',
     date: '10 January, 2024',
     img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/659077d4b807603c1cf8a3ff_Event_2.jpg'
   },
   {
-    title: 'Minimelts launch in Mall of Arabia',
+    title: 'Scoop Bill launch in Mall of Arabia',
     location: '6th of October, Central axis, Mall of Arabia, Giza, Egypt',
     date: '12 March, 2024',
     img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/659077f43fcec21648efb29e_Event_1.jpg'
@@ -78,7 +78,7 @@ export default function OurWorldPage() {
           <div className="section-header_container is-aligned-centered">
             <h2 className="text-align-center text-color-orange">News</h2>
             <p className="text-align-center text-size-medium is-75 mobile-100">
-              Follow the latest news from Minimelts Egypt.
+              Follow the latest news from Scoop Bill Egypt.
             </p>
           </div>
 
@@ -120,7 +120,7 @@ export default function OurWorldPage() {
           <div className="section-header_container is-aligned-centered">
             <h2 className="text-align-center text-color-purple">Events</h2>
             <p className="text-align-center text-size-medium is-75 mobile-100">
-              In Minimelts, good things happen fast. Check our latest events to stay updated on what's happening in our world!
+              In Scoop Bill, good things happen fast. Check our latest events to stay updated on what's happening in our world!
             </p>
           </div>
 
@@ -160,7 +160,7 @@ export default function OurWorldPage() {
           <div className="section-header_container is-aligned-centered">
             <h2 className="text-align-center text-color-fochia">Jobs</h2>
             <p className="text-align-center text-size-medium is-75 mobile-100">
-              Interested in joining the Minimelts Team? Great! Check these openings out and apply.
+              Interested in joining the Scoop Bill Team? Great! Check these openings out and apply.
             </p>
           </div>
 
@@ -195,7 +195,7 @@ export default function OurWorldPage() {
                     <div className="w-embed">
                       <a
                         className="apply-nw-btn"
-                        href={`mailto:careers@minimelts.com.eg?subject=${encodeURIComponent(job.title)}`}
+                        href={`mailto:careers@scoopbill.com?subject=${encodeURIComponent(job.title)}`}
                         style={{
                           display: 'inline-block',
                           padding: '10px 24px',

@@ -38,12 +38,12 @@ export default function LocationsPage() {
       <section className="section_locations">
         <div className="w-layout-blockcontainer container-large w-container">
           <div className="locations_header-wrapper">
-            <h2 className="text-align-center text-color-orange">Find your nearest store</h2>
+            <h2 className="text-align-center text-color-orange">Find your nearest Scoop Bill store</h2>
             <p className="text-align-center text-size-medium is-75 mobile-100">
-              Bringing Minimelts to Egypt with Mini for food manufacturing. Our goal is to establish a network of stores
-              nationwide for Minimelts enthusiasts.
+              Bringing Scoop Bill to Egypt with a premium network of storefronts. Our goal is to establish a network of
+              stores nationwide for all dessert enthusiasts.
               <br />
-              Minimelts is now more accessible than ever. Explore the locations below to locate a store near you.
+              Scoop Bill is now more accessible than ever. Explore the locations below to locate a store near you.
             </p>
           </div>
 

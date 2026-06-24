@@ -1,22 +1,22 @@
 import Link from 'next/link';
 
 const flavors = [
-  { name: 'Yogurt Berries', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bdddfcf25db5a7b275_65820e5163416e9521272cb8_Yogurt%2520Berries.png' },
-  { name: 'Watermelon', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bdde592a3c19e82c45_65820dcb1fb7c013511aff0a_Watermelon.png' },
-  { name: 'Strawberry', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bc8bcdaa312e68e8d6_65820e9491d43eabcee0fb13_Strawberry.png' },
-  { name: 'Vanilla', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bcac52dae41f60b56c_65820d9d1fb7c013511ae625_Vanilla.png' },
-  { name: 'Pina Colada', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bc76b51aa5708ef937_65820e2f23c71d0e0776d857_Pina%2520Colada.png' },
-  { name: 'Pineapple', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bc6f243e3e29fe1646_65820eb3d6126ad15c06e385_Pineapple.png' },
-  { name: 'Mocha', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bc545406ad0dafb6b7_65820dbc22889de3873ac971_Mocha.png' },
-  { name: 'Mango', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bc583561908883fa76_65820e5e92bcf63e2f7d7187_Mango.png' },
-  { name: 'Lemon Mint', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bc85e70df2b29722cd_65820e06d311f826d0984619_Lemon%2520Mint.png' },
-  { name: 'Cotton Candy Mix', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bcbb8dac6e0521b761_65820dd7085c536450f263bd_Cotton%2520Candy%2520Mix.png' },
-  { name: 'Chocolate Cake', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bbd3adbabd97fff02b_65820e3ff21ebb5d9150febd_Chocolate%2520Cake.png' },
-  { name: 'Birthday Cake', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bbaa0f9f27e97b16f4_65820df9a7005111d083469f_Birthday%2520Cake.png' },
-  { name: 'BannaGum', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bb4fda91b984b053a3_65820dae7ecb9532a95223e4_BannaGum.png' },
-  { name: 'Cookies N’ Cream', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bb6f243e3e29fe15e4_65820e218dcfa4fab9704881_Cookies%2520N%25E2%2580%2599%2520Cream.png' },
-  { name: 'Cherry Cola', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bbe01fce488d9acc9d_65820e16fd48f4b1c1149a9f_Cherry%2520Cola.png' },
-  { name: 'Chocolate', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bb7a2ea60a515f16de_65820d885e7eaa78ed3e5fd7_Chocolate.png' },
+  { name: 'Berry Yogurt Scoop', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bdddfcf25db5a7b275_65820e5163416e9521272cb8_Yogurt%2520Berries.png' },
+  { name: 'Watermelon Sorbet', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bdde592a3c19e82c45_65820dcb1fb7c013511aff0a_Watermelon.png' },
+  { name: 'Strawberry Cup', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bc8bcdaa312e68e8d6_65820e9491d43eabcee0fb13_Strawberry.png' },
+  { name: 'Vanilla Cone', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bcac52dae41f60b56c_65820d9d1fb7c013511ae625_Vanilla.png' },
+  { name: 'Pina Colada Special', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bc76b51aa5708ef937_65820e2f23c71d0e0776d857_Pina%2520Colada.png' },
+  { name: 'Pineapple Scoop', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bc6f243e3e29fe1646_65820eb3d6126ad15c06e385_Pineapple.png' },
+  { name: 'Mocha Magic', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bc545406ad0dafb6b7_65820dbc22889de3873ac971_Mocha.png' },
+  { name: 'Mango Delight', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bc583561908883fa76_65820e5e92bcf63e2f7d7187_Mango.png' },
+  { name: 'Lemon Mint Splash', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bc85e70df2b29722cd_65820e06d311f826d0984619_Lemon%2520Mint.png' },
+  { name: 'Cotton Candy Scoop', img: 'https://cdn.prod.website-files.com/6585c0cabac3e77d01299d7f/6585c5e17a9f8d4de02fe508_Splash.png' }, // fallback
+  { name: 'Chocolate Cake Fudge', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bbd3adbabd97fff02b_65820e3ff21ebb5d9150febd_Chocolate%2520Cake.png' },
+  { name: 'Birthday Cake Sprinkles', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bbaa0f9f27e97b16f4_65820df9a7005111d083469f_Birthday%2520Cake.png' },
+  { name: 'Banana Bubblegum', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bb4fda91b984b053a3_65820dae7ecb9532a95223e4_BannaGum.png' },
+  { name: 'Cookies N’ Cream Premium', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bb6f243e3e29fe15e4_65820e218dcfa4fab9704881_Cookies%2520N%25E2%2580%2599%2520Cream.png' },
+  { name: 'Cherry Cola Float', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bbe01fce488d9acc9d_65820e16fd48f4b1c1149a9f_Cherry%2520Cola.png' },
+  { name: 'Dark Chocolate Scoop', img: 'https://cdn.prod.website-files.com/6585c592094e32e9fd5e8886/6585c5bb7a2ea60a515f16de_65820d885e7eaa78ed3e5fd7_Chocolate.png' },
 ];
 
 export default function Homepage() {
@@ -36,9 +36,9 @@ export default function Homepage() {
             <div className="hero_content-wrapper">
               <h1 className="mobile-aligned-centered">The coolest</h1>
               <h1 className="hero_large-h1 mobile-aligned-centered">Ice Cream</h1>
-              <h1 className="mobile-aligned-centered">in the world</h1>
+              <h1 className="mobile-aligned-centered">in town</h1>
             </div>
-            <a href="#Second-Two" className="button is-red w-button">Explore our world</a>
+            <a href="#Second-Two" className="button is-red w-button">Explore our scoops</a>
           </div>
         </div>
       </section>
@@ -50,9 +50,9 @@ export default function Homepage() {
             <div className="section-content_text-wrapper mobile-100">
               <h2 className="text-color-white">Who we are?</h2>
               <p className="text-size-medium text-weight-medium text-color-white">
-                We represent a whole new generation, which makes us constantly on the lookout for standing out, as we are
-                fresh, youthful, hip, distinctive, trendy, fierce, bold, risk-takers, challenging, boundless, happy, innovative,
-                and above all else, we are unique.
+                We represent a whole new generation of ice cream lovers. Scoop Bill is constantly on the lookout for
+                standing out: we are fresh, youthful, hip, distinctive, trendy, fierce, bold, risk-takers, innovative,
+                and above all else, we are unique in delivering pure happiness in every scoop.
               </p>
             </div>
             <Link href="/about-us" className="button is-yellow w-button">Learn more</Link>
@@ -74,7 +74,7 @@ export default function Homepage() {
         />
       </section>
 
-      {/* Futuristic Ice Cream */}
+      {/* Futuristic / Artisanal Ice Cream */}
       <section className="section_futuristic-ice-cream">
         <img
           src="https://cdn.prod.website-files.com/6585c0cabac3e77d01299d7f/6585c48ebdda2e1921a0d06f_Yellow%20Strip%202.svg"
@@ -86,11 +86,11 @@ export default function Homepage() {
           <div className="left-fake-block"></div>
           <div className="section-content_container is-50 mobile-100">
             <div className="section-content_text-wrapper is-100">
-              <h2 className="text-color-white">A futuristic ice cream, anyone ?</h2>
+              <h2 className="text-color-white">Artisanal Churned Ice Cream, anyone ?</h2>
               <p className="text-size-medium text-weight-medium text-color-white">
-                Minimelts is a flash-frozen, super-premium, and beads-like ice-cream, which looks, feels, and tastes totally
-                different than any other ice-cream, it gives you a revolutionary, immersive tasting experience that takes you
-                places and blows your mind.
+                Scoop Bill is a premium, batch-churned ice-cream that looks, feels, and tastes totally different. Churned at
+                optimal temperatures to eliminate air bubbles and ice crystals, it gives you a rich, velvety, and immersive
+                tasting experience that takes you places and blows your mind.
               </p>
             </div>
           </div>
@@ -165,9 +165,9 @@ export default function Homepage() {
               </div>
             </div>
             <p className="text-size-medium text-weight-medium">
-              Minimelts is a flash-frozen, super-premium, and beads-like ice-cream, which looks, feels, and tastes totally
-              different than any other ice-cream, it gives you a revolutionary, immersive tasting experience that takes you
-              places and blows your mind.
+              Our master churners have been perfecting the art of batch freezing and flavor extraction for over two decades,
+              delivering rich, velvety ice cream that is loved across the globe. Scoop Bill represents this heritage, refined
+              with a modern twist.
             </p>
           </div>
           <img
