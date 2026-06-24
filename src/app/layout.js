@@ -1,12 +1,11 @@
 import './globals.css';
-import Sidebar from '@/components/layout/Sidebar';
 import { ToastProvider } from '@/components/ui/Toast';
 
 export const metadata = {
-  title: 'ScoopBill - Ice Cream Shop Billing System',
-  description: 'Full-stack ice cream shop billing, inventory, and analytics system',
+  title: 'Minimelts Egypt - The Coolest Ice Cream in the World',
+  description: 'Welcome to the world of Minimelts, where you have the power to create and unleash your wildest sweet dream.',
   icons: {
-    icon: 'https://cdn-icons-png.flaticon.com/512/921/921221.png',
+    icon: 'https://cdn.prod.website-files.com/6585c0cabac3e77d01299d7f/658b5de061cdc3543488369e_Favicons.png',
   },
 };
 
@@ -15,12 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body suppressHydrationWarning>
         <ToastProvider>
-          <div className="app">
-            <Sidebar />
-            <main className="main">
-              {children}
-            </main>
-          </div>
+          {children}
         </ToastProvider>
       </body>
     </html>
